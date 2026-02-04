@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tuổi Học Trò Và Ước Mơ</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@300;400;500&display=swap"
+        rel="stylesheet">
+
+    <style>
+        /* --- RESET VÀ BIẾN CSS --- */
+        :root {
+            --primary-color: #f8f1e5;
+            --secondary-color: #fde8e9;
+            --accent-color: #e8b4b8;
+            --dark-color: #0b0a0a;
+            --light-color: #fffaf0;
+            --gold-color: #d4af37;
+            --font-heading: 'Playfair Display', serif;
+            --font-cursive: 'Dancing Script', cursive;
+            --font-body: 'Quicksand', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--dark-color);
+            background-color: var(--primary-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            color: var(--dark-color);
+        }
+
+        .cursive {
+            font-family: var(--font-cursive);
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 100px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.8rem;
+            display: inline-block;
+            position: relative;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, var(--accent-color), var(--gold-color));
+        }
+
+        /* --- BUTTONS --- */
+        .btn {
+            display: inline-block;
+            padding: 12px 28px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-family: var(--font-body);
+        }
+
+        .btn-primary {
+            background-color: var(--accent-color);
+            color: white;
+            box-shadow: 0 4px 15px rgba(232, 180, 184, 0.4);
+        }
+
+        .btn-primary:hover {
+            background-color: #e09da3;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(232, 180, 184, 0.5);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--dark-color);
+            border: 2px solid var(--accent-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(232, 180, 184, 0.1);
+            transform: translateY(-3px);
+        }
+
+        /* --- HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 20px 0;
+            transition: all 0.5s ease;
+        }
+
+        header.scrolled {
+            background-color: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-cursive);
+            font-size: 2rem;
+            font-weight: 700;
+            color: var(--dark-color);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            color: var(--accent-color);
+            margin-right: 10px;
+            font-size: 1.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+        }
+
+        .nav-menu li {
+            margin-left: 30px;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            color: var(--dark-color);
+            font-weight: 500;
+            font-size: 1.05rem;
+            position: relative;
+            padding-bottom: 5px;
+            transition: color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            color: var(--accent-color);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            font-size: 1.5rem;
+            color: var(--dark-color);
+            cursor: pointer;
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url('https://i.pinimg.com/736x/63/12/fd/6312fda21cd8044b5715a9cc8183f512.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        .hero-content {
+            text-align: center;
+            color: white;
+            z-index: 2;
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 20px;
+            color: white;
+            font-family: var(--font-cursive);
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+        }
+
+        /* --- ABOUT SECTION --- */
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-img {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .about-text h3 {
+            font-size: 2.2rem;
+            margin-bottom: 25px;
+        }
+
+        /* --- GALLERY SECTION --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            border-radius: 8px;
+            overflow: hidden;
+            height: 280px;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        /* --- VIDEO SECTION --- */
+        .video-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+        }
+
+        .video-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        video {
+            width: 100%;
+            height: 250px;
+            background: #000;
+            display: block;
+        }
+
+        .video-info {
+            padding: 20px;
+        }
+
+        /* --- REASONS SECTION (VÌ SAO) --- */
+        .reasons-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .reason-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+            transition: 0.4s;
+        }
+
+        .reason-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .reason-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .reason-content {
+            padding: 30px;
+        }
+
+        .reason-content h3 {
+            color: var(--accent-color);
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+
+        /* --- METHODS SECTION (PHƯƠNG PHÁP) --- */
+        .methods-list {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .method-item {
+            background: white;
+            padding: 30px;
+            margin-bottom: 25px;
+            border-left: 6px solid var(--accent-color);
+            border-radius: 0 15px 15px 0;
+            transition: 0.3s;
+        }
+
+        .method-item:hover {
+            transform: translateX(10px);
+            background: var(--secondary-color);
+        }
+
+        /* --- STORIES SECTION (TẤM GƯƠNG) --- */
+        .stories-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .story-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+            transition: 0.3s;
+        }
+
+        .story-img {
+            height: 250px;
+        }
+
+        .story-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .story-content {
+            padding: 25px;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background-color: #3a3a3a;
+            color: #ddd;
+            padding: 70px 0 30px;
+        }
+
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-logo {
+            font-family: var(--font-cursive);
+            font-size: 2rem;
+            color: white;
+            text-decoration: none;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            color: #ddd;
+            font-size: 1.2rem;
+            transition: 0.3s;
+        }
+
+        .social-links a:hover {
+            color: var(--accent-color);
+        }
+
+        /* --- RESPONSIVE --- */
+        @media (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                top: 70px;
+                left: -100%;
+                width: 100%;
+                background: white;
+                flex-direction: column;
+                padding: 40px;
+                transition: 0.4s;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .nav-menu li {
+                margin: 15px 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header id="navbar">
+        <div class="container header-container">
+            <a href="#home" class="logo"><i class="fas fa-star"></i> Tuổi học trò và ước mơ</a>
+            <div class="mobile-menu-btn" id="mobile-btn"><i class="fas fa-bars"></i></div>
+            <ul class="nav-menu" id="nav-list">
+                <li><a href="#home">Trang Chủ</a></li>
+                <li><a href="#about">Định Nghĩa</a></li>
+                <li><a href="#gallery">Hình Ảnh</a></li>
+                <li><a href="#videos">Video</a></li>
+                <li><a href="#reasons">Vì Sao</a></li>
+                <li><a href="#methods">Phương Pháp</a></li>
+                <li><a href="#stories">Tấm Gương</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Tuổi học trò và ước mơ</h1>
+            <p>"Ước mơ giống như những vì sao, ta có thể không bao giờ chạm tay vào được, nhưng nếu đi theo chúng, chúng
+                sẽ dẫn ta đến vận mệnh của mình."</p>
+            <div class="hero-btns">
+                <a href="#about" class="btn btn-primary">Bắt Đầu Khám Phá</a>
+                <a href="#videos" class="btn btn-secondary">Xem Video</a>
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-img"><img src="https://demoda.vn/wp-content/uploads/2022/03/anh-uoc-mo-dep-400x600.jpg" alt="Definition"></div>
+                <div class="about-text">
+                    <div class="section-title" style="text-align: left;">
+                        <h2>Ước Mơ Là Gì?</h2>
+                    </div>
+                    <p>Ước mơ là những mong muốn, khao khát và mục tiêu về một điều gì đó mà con người muốn đạt được. Nó
+                        không chỉ là ý nghĩ nhất thời mà là động lực bền bỉ giúp ta vượt qua những khó khăn, thử thách
+                        trong cuộc sống.</p>
+                    <p>Mỗi ước mơ, dù nhỏ bé hay lớn lao, đều góp phần tạo nên màu sắc riêng biệt cho cuộc đời mỗi
+                        người.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery" style="background-color: var(--secondary-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Hình Ảnh Ước Mơ</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item"><img src="https://wp-cms-media.s3.ap-east-1.amazonaws.com/tim_hieu_hoi_hoa_la_gi_4d3087fd46.jpg" alt="Dream 1"></div>
+                <div class="gallery-item"><img src="https://sokhcn.cantho.gov.vn/upload/userfiles/198/images/26-7-24-2(1).jpg" alt="Dream 2"></div>
+                <div class="gallery-item"><img src="https://cly.1cdn.vn/2023/11/03/ao-quyen.jpg" alt="Dream 3"></div>
+                <div class="gallery-item"><img src="https://bcp.cdnchinhphu.vn/334894974524682240/2024/4/14/img3829-171307405588822777799.jpg" alt="Dream 4"></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="videos">
+        <div class="container">
+            <div class="section-title">
+                <h2>Khoảnh Khắc Truyền Cảm Hứng</h2>
+            </div>
+            <div class="video-container">
+                <div class="video-item">
+                    <video controls src="video/1.mp4"></video>
+                    <div class="video-info">
+                        <h3>Định hướng tương lai</h3>
+                        <p>Video chia sẻ về tầm quan trọng của việc xác định mục tiêu từ sớm.</p>
+                    </div>
+                </div>
+                <div class="video-item">
+                    <video controls src="video/2.mp4"></video>
+                    <div class="video-info">
+                        <h3>Nỗ lực không ngừng</h3>
+                        <p>Hành trình từ con số 0 đến khi chạm tay vào giấc mơ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="reasons" style="background-color: var(--light-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Vì Sao Cần Có Ước Mơ?</h2>
+            </div>
+            <div class="reasons-grid">
+                <div class="reason-card">
+                    <img src="https://ironstone.vn/resources/images/cks/134.jpeg" alt="Motivation">
+                    <div class="reason-content">
+                        <h3>Động Lực Tinh Thần</h3>
+                        <p>Giúp bạn kiên trì đứng dậy sau mỗi lần vấp ngã.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <img src="https://media.daidoanket.vn/w1200/uploaded/images/2025/09/08/fcaa8cd5-de4b-4baa-b727-3e17a5857e2f.jpg" alt="Value">
+                    <div class="reason-content">
+                        <h3>Giá Trị Bản Thân</h3>
+                        <p>Giúp bạn hiểu rõ thế mạnh và hoàn thiện bản thân mỗi ngày.</p>
+                    </div>
+                </div>
+                <div class="reason-card">
+                    <img src="https://minio.ftech.ai/hoclagioi/Dan_chung_niem_tin_3fbe796e58.jpg" alt="Courage">
+                    <div class="reason-content">
+                        <h3>Vượt Qua Giới Hạn</h3>
+                        <p>Cho bạn dũng khí để thử những điều mới mẻ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="methods">
+        <div class="container">
+            <div class="section-title">
+                <h2>Để Theo Đuổi Ước Mơ</h2>
+            </div>
+            <div class="methods-list">
+                <div class="method-item">
+                    <h3><i class="fas fa-edit"></i> 1. Xác định rõ ràng</h3>
+                    <p>Viết mục tiêu ra giấy một cách chi tiết nhất.</p>
+                </div>
+                <div class="method-item">
+                    <h3><i class="fas fa-tasks"></i> 2. Chia nhỏ kế hoạch</h3>
+                    <p>Hành động từ những việc nhỏ nhất mỗi ngày.</p>
+                </div>
+                <div class="method-item">
+                    <h3><i class="fas fa-book"></i> 3. Học hỏi liên tục</h3>
+                    <p>Luôn cập nhật kiến thức và kỹ năng mới.</p>
+                </div>
+                <div class="method-item">
+                    <h3><i class="fas fa-heart"></i> 4. Giữ vững niềm tin</h3>
+                    <p>Kiên trì dù gặp bất cứ khó khăn nào.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="stories" style="background-color: var(--secondary-color);">
+        <div class="container">
+            <div class="section-title">
+                <h2>Tấm Gương Sáng</h2>
+            </div>
+            <div class="stories-grid">
+                <div class="story-card">
+                    <div class="story-img"><img src="https://danviet.ex-cdn.com/files/f1/296231569849192448/2023/10/14/son-tung-mtp-1697273184168953378334.jpg" alt="Son Tung"></div>
+                    <div class="story-content">
+                        <h3>Sơn Tùng M-TP</h3>
+                        <p>Biểu tượng của sự nỗ lực và khát vọng vươn tầm quốc tế.</p>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <div class="story-img"><img src="https://cdn.giaoducthoidai.vn/images/1bc41bd8fa1b36e3b55214bb7d203c146463e32222e19c60236cbf7fed9897f5f65e2ff411a5e7956bc4a377c3983a11e2bbf1f00fdec1c140ff84f716ddfb5b/tekt2.jpg.webp" alt="Chau"></div>
+                    <div class="story-content">
+                        <h3>Lê Minh Châu</h3>
+                        <p>Nghị lực phi thường của họa sĩ vẽ bằng miệng.</p>
+                    </div>
+                </div>
+                <div class="story-card">
+                    <div class="story-img"><img src="https://giadinhhoangtrong.wordpress.com/wp-content/uploads/2014/12/susan-boyle-1.jpg?w=584" alt="Susan"></div>
+                    <div class="story-content">
+                        <h3>Susan Boyle</h3>
+                        <p>Chưa bao giờ là quá muộn để bắt đầu giấc mơ.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <a href="#" class="footer-logo">Tuổi học trò và ước mơ</a>
+                    <p>Nơi khơi nguồn cảm hứng và hành động cho những hoài bão trẻ.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Tuổi học trò và ước mơ. Made with <span class="cursive">love</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Xử lý Header khi cuộn
+        window.addEventListener('scroll', function () {
+            const header = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Xử lý Menu Mobile
+        const mobileBtn = document.getElementById('mobile-btn');
+        const navList = document.getElementById('nav-list');
+
+        mobileBtn.addEventListener('click', () => {
+            navList.classList.toggle('active');
+        });
+
+        // Đóng menu khi click vào link
+        document.querySelectorAll('.nav-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navList.classList.remove('active');
+            });
+        });
+    </script>
+</body>
+
+</html>
